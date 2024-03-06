@@ -8,7 +8,6 @@
 using namespace std;
 
 pair<int,int> count_love_hate(vector<string> palavras, int &love, int &hate) {
-    cout << palavras.size()<< endl;
     for (auto palavra: palavras) {
         for (int i = 0; i < palavra.size(); i++) {
             if (ispunct(palavra[i])) {
@@ -21,7 +20,6 @@ pair<int,int> count_love_hate(vector<string> palavras, int &love, int &hate) {
                 palavra[i] = tolower(palavra[i]);
             }
         }
-        cout<< palavra << endl;
         if (palavra == "love") {
             love++;
         } else if (palavra == "hate") {

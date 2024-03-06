@@ -12,16 +12,15 @@ int main(){
     vector<int> love(NUM_THREADS, 0);
     vector<int> hate(NUM_THREADS, 0);
     for (int i = 0; i < NUM_THREADS; i++) {
+        vector<string> slice;
         if (i == NUM_THREADS - 1) {
-            threads.push_back(thread(count_love_hate,
-                                     (palavras.begin() + i * (palavras.size() / NUM_THREADS), palavras.end()),
-                               ref(love[i]), ref(hate[i]));
+            slice = vector<string>(palavras.begin() + i * (palavras.size() / NUM_THREADS), palavras.end());
         } else {
-            threads.push_back(thread(count_love_hate,
-                                     slice(palavras.begin() + i * (palavras.size() / NUM_THREADS),
-                                 palavras.begin() + (i + 1) * (palavras.size() / NUM_THREADS)),
-                                 ref(love[i]), ref(hate[i]));
+            slice = vector<string>(palavras.begin() + i * (palavras.size() / NUM_THREADS),
+                                 palavras.begin() + (i + 1) * (palavras.size() / NUM_THREADS));
         }
+        threads.emplace_back(count_love_hate, slice,
+                                 ref(love[i]), ref(hate[i]));
     }
     for (int i = 0; i < NUM_THREADS; i++) {
         threads[i].join();

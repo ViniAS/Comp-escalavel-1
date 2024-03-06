@@ -10,6 +10,6 @@ using namespace std;
 #ifndef WORDPROCESSOR_H
 #define WORDPROCESSOR_H
 
-pair<int,int> count_love_hate(vector<string> palavras);
+pair<int,int> count_love_hate(vector<string> palavras, int& love, int& hate);
 
 #endif //WORDPROCESSOR_H
