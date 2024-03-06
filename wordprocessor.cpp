@@ -7,9 +7,7 @@
 
 using namespace std;
 
-pair<int,int> count_love_hate(vector<string> palavras) {
-    int love = 0;
-    int hate = 0;
+pair<int,int> count_love_hate(vector<string> palavras, int &love, int &hate) {
     cout << palavras.size()<< endl;
     for (auto palavra: palavras) {
         for (int i = 0; i < palavra.size(); i++) {
