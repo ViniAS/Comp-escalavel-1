@@ -37,16 +37,25 @@ ThreadResult count_love_hate_wrapper(vector<string>& palavras, int num_threads) 
     for (int i = 0; i < num_threads; i++) {
         threads[i].join();
     }
-
     // Calcular o tempo decorrido
     auto end_time = chrono::high_resolution_clock::now();
+
+    int iLove = 0;
+    int iHate = 0;
+    // Agregar os resultados
+    for (int i = 0; i < num_threads; i++) {
+        iLove += love[i];
+        iHate += hate[i];
+    }
+    cout<<"Love: "<<iLove<<endl;
+    cout<<"Hate: "<<iHate<<endl;
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
     return {num_threads, love[0], hate[0], duration};
 }
 
 int main() {
-    vector<string> palavras = lerArquivo("test.txt");
+    vector<string> palavras = lerArquivo("../test.txt");
 
     vector<ThreadResult> results;
 
