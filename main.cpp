@@ -47,15 +47,13 @@ ThreadResult count_love_hate_wrapper(vector<string>& palavras, int num_threads) 
         iLove += love[i];
         iHate += hate[i];
     }
-    cout<<"Love: "<<iLove<<endl;
-    cout<<"Hate: "<<iHate<<endl;
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    return {num_threads, love[0], hate[0], duration};
+    return {num_threads, iLove, iHate, duration};
 }
 
 int main() {
-    vector<string> palavras = lerArquivo("test.txt");
+    vector<string> palavras = lerArquivo("../test.txt");
 
     vector<ThreadResult> results;
 
@@ -65,7 +63,7 @@ int main() {
     }
 
     // salva os resultados em um arquivo csv 
-    ofstream file("results.csv");
+    ofstream file("../results.csv");
     file << "num_threads,love,hate,duration" << endl;
     for (auto result : results) {
         file << result.num_threads << "," << result.love << "," << result.hate << "," << result.duration << endl;
