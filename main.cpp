@@ -55,7 +55,7 @@ ThreadResult count_love_hate_wrapper(vector<string>& palavras, int num_threads) 
 }
 
 int main() {
-    vector<string> palavras = lerArquivo("../test.txt");
+    vector<string> palavras = lerArquivo("test.txt");
 
     vector<ThreadResult> results;
 
