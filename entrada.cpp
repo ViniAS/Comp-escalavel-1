@@ -25,14 +25,14 @@ vector<string> lerArquivo(string nomeArquivo) {
         // }}
         palavras.push_back(palavra);
     } 
-
+    arquivo.close();
     return palavras;
 }
 
-int main() {
-    vector<string> linhas = lerArquivo("test.txt");
-    for (string linha : linhas) {
-        cout << linha << endl;
-    }
-    return 0;
-}
+//int main() {
+//    vector<string> linhas = lerArquivo("test.txt");
+//    for (string linha : linhas) {
+//        cout << linha << endl;
+//    }
+//    return 0;
+//}

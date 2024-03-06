@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.27)
-project(untitled)
+project(CompEscalavel)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled main.cpp)
+add_executable(CompEscalavel main.cpp
+                entrada.cpp
+                wordprocessor.cpp
+                wordprocessor.h
+        entrada.h)

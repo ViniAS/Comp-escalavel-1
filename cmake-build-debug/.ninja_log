@@ -1,3 +1,16 @@
 # ninja log v5
-1	238	1701146199712253674	CMakeFiles/untitled.dir/main.cpp.o	4857bb63f2e7bdcf
+0	498	1709731935281610892	CMakeFiles/CompEscalavel.dir/wordprocessor.cpp.o	1000ff7a7d919917
+0	380	1709732007396455905	CMakeFiles/CompEscalavel.dir/main.cpp.o	467aa6dd6670f711
+0	306	1709731935089719123	CMakeFiles/CompEscalavel.dir/entrada.cpp.o	2b52ea25354422c1
+0	50	1709732112816682211	build.ninja	6bb41759fb93630b
 238	286	1701146199760252486	untitled	70eda2c3eb1be2d8
+0	284	1709732172837350685	CMakeFiles/CompEscalavel.dir/main.cpp.o	467aa6dd6670f711
+284	329	1709732172881373097	CompEscalavel	8e2bff0fbb272747
+1	422	1709732248830261379	CMakeFiles/CompEscalavel.dir/wordprocessor.cpp.o	1000ff7a7d919917
+422	469	1709732248874266793	CompEscalavel	8e2bff0fbb272747
+0	427	1709732273641458378	CMakeFiles/CompEscalavel.dir/wordprocessor.cpp.o	1000ff7a7d919917
+427	474	1709732273689452612	CompEscalavel	8e2bff0fbb272747
+0	289	1709732294994441881	CMakeFiles/CompEscalavel.dir/main.cpp.o	467aa6dd6670f711
+289	336	1709732295042387069	CompEscalavel	8e2bff0fbb272747
+1	264	1709732459154806211	CMakeFiles/CompEscalavel.dir/entrada.cpp.o	2b52ea25354422c1
+264	322	1709732459238881281	CompEscalavel	8e2bff0fbb272747
