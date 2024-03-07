@@ -1,38 +1,19 @@
-#include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-vector<string> lerArquivo(string nomeArquivo) {
-    vector<string> palavras;
-    ifstream arquivo(nomeArquivo);
-    string palavra;
+vector<string> readfile(const string &filename) {
+    vector<string> words;
 
-    // split word, ignore special characters
-    while (arquivo >> palavra) {
-        // remove special characters
-        // for (int i = 0; i < palavra.size(); i++) {
-        //     if (ispunct(palavra[i])) {
-        //         palavra.erase(i--, 1);
-        //     }
-        // }
-        // // lowercase word
-        // for (int i = 0; i < palavra.size(); i++) {
-        //     if (isalpha(palavra[i])){
-        //     palavra[i] = tolower(palavra[i]);
-        // }}
-        palavras.push_back(palavra);
+    ifstream file(filename);
+    string word;
+
+    // separar em palavras
+    while (file >> word) {
+        words.push_back(word);
     } 
-    arquivo.close();
-    return palavras;
+    file.close();
+    return words;
 }
-
-//int main() {
-//    vector<string> linhas = lerArquivo("test.txt");
-//    for (string linha : linhas) {
-//        cout << linha << endl;
-//    }
-//    return 0;
-//}
