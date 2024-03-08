@@ -12,6 +12,7 @@ struct ThreadResult {
     int love;
     int hate;
     long long duration; // Tempo em milissegundos
+    int block_size; // Tamanho do bloco de cada thread, em palavras
 };
 
 // Função para contar love e hate
@@ -19,17 +20,17 @@ ThreadResult count_love_hate_wrapper(vector<string>& palavras, int num_threads) 
     vector<thread> threads;
     vector<int> love(num_threads, 0);
     vector<int> hate(num_threads, 0);
-
+    int block_size = palavras.size() / num_threads;
     // Medir o tempo inicial
     auto start_time = chrono::high_resolution_clock::now();
 
     for (int i = 0; i < num_threads; i++) {
         vector<string> slice;
         if (i == num_threads - 1) {
-            slice = vector<string>(palavras.begin() + i * (palavras.size() / num_threads), palavras.end());
+            slice = vector<string>(palavras.begin() + i * block_size, palavras.end());
         } else {
-            slice = vector<string>(palavras.begin() + i * (palavras.size() / num_threads),
-                                   palavras.begin() + (i + 1) * (palavras.size() / num_threads));
+            slice = vector<string>(palavras.begin() + i * block_size,
+                                   palavras.begin() + (i + 1) * block_size);
         }
         threads.emplace_back(count_love_hate, slice, ref(love[i]), ref(hate[i]));
     }
@@ -49,7 +50,7 @@ ThreadResult count_love_hate_wrapper(vector<string>& palavras, int num_threads) 
     }
     auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    return {num_threads, iLove, iHate, duration};
+    return {num_threads, iLove, iHate, duration, block_size};
 }
 
 void create_data_graph(int num_threads_limit, const string &filename)
@@ -65,16 +66,16 @@ void create_data_graph(int num_threads_limit, const string &filename)
 
     // salva os resultados em um arquivo csv
     ofstream file("../results.csv");
-    file << "num_threads,love,hate,duration" << endl;
+    file << "num_threads,love,hate,duration,block_size" << endl;
     for (auto result : results) {
-        file << result.num_threads << "," << result.love << "," << result.hate << "," << result.duration << endl;
+        file << result.num_threads << "," << result.love << "," << result.hate << "," << result.duration << "," << result.block_size << endl;
     }
     file.close();
 }
 
 int main() {
     int num_threads = 3;
-    string filename = "test.txt";
+    string filename = "../test.txt";
     create_data_graph(100, filename);
 
 

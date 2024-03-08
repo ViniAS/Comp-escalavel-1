@@ -17,17 +17,16 @@ import pandas as pd
 
 def plot_results(csv):
     data = pd.read_csv(csv)
-
+    print(data.head())
     # Cria um subplot com 1 linha e 2 colunas
     plt.figure(figsize=(9, 5))
     plt.subplot(1, 2, 1)
 
     # Plota o gráfico Num Threads x Love
-    plt.plot(data['num_threads'], data['love'], marker='o', label='Love')
-    plt.plot(data['num_threads'], data['hate'], marker='o', label='Hate')
+    plt.plot(data['num_threads'], data['block_size'], marker='o', label='Love')
     plt.xlabel('Num Threads')
-    plt.ylabel('Count')
-    plt.title('Num Threads x Love/Hate')
+    plt.ylabel('Block Size')
+    plt.title('Num Threads x Block Size')
     plt.legend()
     plt.grid()
     # Muda para o segundo subplot
