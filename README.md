@@ -26,7 +26,7 @@ make
 Se a compilação for bem sucedida, um executável será criado. Para  rodar o arquivo, basta usar o comando:
 
 ```bash
-./A2PAA
+./CompEscalavel
 ```
 
 Um arquivo chamado "results.csv" vai ser criado no repositório principal com o resultados do programa.
